@@ -7,6 +7,7 @@ COQDOCFLAGS ?= \
 export COQDOCFLAGS
 COQMAKEFILE ?= Makefile.coq
 COQDOCJS_LN ?= false
+COQDOCJS_STATIC ?= false
 
 coqdoc: $(COQMAKEFILE)
 	$(MAKE) -f $^ html
@@ -14,6 +15,14 @@ ifeq ($(COQDOCJS_LN),true)
 	ln -sf ../$(EXTRA_DIR)/resources html
 else
 	cp -R $(EXTRA_DIR)/resources html
+endif
+ifeq ($(COQDOCJS_STATIC),true)
+	cd coqdocjs/coqdocjs-static &&	npm install && \
+		find ../../html/ -name '*.html' | \
+		parallel node index.js --inplace
+	rm -f html/resources/preprocess.js
+	rm -r html/resources/config.js
+	grep -v preprocess $(EXTRA_DIR)/resources/coqdocjs.js > html/resources/coqdocjs.js
 endif
 
 .PHONY: coqdoc

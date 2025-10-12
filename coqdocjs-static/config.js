@@ -1,0 +1,1 @@
+../extra/resources/config.js

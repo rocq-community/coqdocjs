@@ -1,0 +1,16 @@
+{
+  "name": "coqdocjs-static",
+  "version": "1.0.0",
+  "description": "A program that transforms the output of coqdoc for coqdocjs to consume",
+  "license": "ISC",
+  "author": "Yiyun Liu",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "jsdom": "^27.0.0",
+    "yargs": "^18.0.0"
+  }
+}
