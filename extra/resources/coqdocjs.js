@@ -26,10 +26,11 @@ function toArray(nl){
 
 function replInTextNodes() {
   coqdocjs.replInText.forEach(function(toReplace){
-    toArray(document.getElementsByClassName("code")).concat(toArray(document.getElementsByClassName("inlinecode"))).forEach(function(elem){
-      toArray(elem.childNodes).forEach(function(node){
+      document.querySelectorAll('.code, .inlinecode').forEach(function(elem){
+      elem.childNodes.forEach(function(node){
         if (node.nodeType != Node.TEXT_NODE) return;
         var fragments = node.textContent.split(toReplace);
+	if (fragments.length === 1) return;
         node.textContent = fragments[fragments.length-1];
         for (var k = 0; k < fragments.length - 1; ++k) {
           node.parentNode.insertBefore(document.createTextNode(fragments[k]),node);
