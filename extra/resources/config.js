@@ -1,6 +1,5 @@
-var coqdocjs = coqdocjs || {};
-
-coqdocjs.repl = {
+/*jshint esversion: 6 */
+const repl = {
     "forall": "∀",
     "exists": "∃",
     "~": "¬",
@@ -56,7 +55,7 @@ coqdocjs.repl = {
     "Xi": "Ξ"
 };
 
-coqdocjs.subscr = {
+const subscr = {
   "0" : "₀",
   "1" : "₁",
   "2" : "₂",
@@ -69,4 +68,6 @@ coqdocjs.subscr = {
   "9" : "₉",
 };
 
-coqdocjs.replInText = ["==>","<=>", "=>", "->", "<-", ":="];
+const replInText = ["==>","<=>", "=>", "->", "<-", ":="];
+
+export {repl,subscr,replInText};
